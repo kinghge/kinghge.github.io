@@ -1,124 +1,48 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[姓名]的个人介绍</title>
-    <link rel="stylesheet" href="style.css">
+    <title>欢迎</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .welcome-container {
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #8e44ad;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #8e44ad;
+            color: white;
+        }
+    </style>
 </head>
-
 <body>
-    <header>
-        <img src="avatar.jpg" alt="[姓名]的头像" class="avatar">
-        <h1>欢迎来到我的个人介绍页面！</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于我</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#experience">经历</a></li>
-                <li><a href="#portfolio">作品展示</a></li>
-                <li><a href="#contact">联系方式</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="about">
-            <h2>关于我</h2>
-            <p>姓名：[姓名]</p>
-            <p>年龄：[年龄]</p>
-            <p>职业：[职业]</p>
-            <p>居住地：[城市，国家]</p>
-            <p>个人简介：[在这里添加一段简短的文字介绍自己的性格、爱好和职业目标]</p>
-        </section>
-
-        <section id="skills">
-            <h2>技能</h2>
-            <ul>
-                <li>
-                    <span>技能1</span>
-                    <div class="skill-bar">
-                        <div style="width: 90%"></div>
-                    </div>
-                </li>
-                <li>
-                    <span>技能2</span>
-                    <div class="skill-bar">
-                        <div style="width: 80%"></div>
-                    </div>
-                </li>
-                <!-- 添加更多技能 -->
-            </ul>
-        </section>
-
-        <section id="experience">
-            <h2>经历</h2>
-            <h3>教育背景</h3>
-            <ul>
-                <li>[学历] - [毕业院校] - [专业] ([年份])</li>
-                <!-- 添加更多教育经历 -->
-            </ul>
-            <h3>工作经历</h3>
-            <ul>
-                <li>
-                    <h4>[公司名称] - [职位]</h4>
-                    <p>[起止时间]</p>
-                    <p>主要职责：[简要描述]</p>
-                </li>
-                <!-- 添加更多工作经历 -->
-            </ul>
-        </section>
-
-        <section id="portfolio">
-            <h2>作品展示</h2>
-            <div class="portfolio-item">
-                <img src="project1.jpg" alt="项目1">
-                <h3>项目1名称</h3>
-                <p>[项目1描述]</p>
-            </div>
-            <!-- 添加更多作品 -->
-        </section>
-    </main>
-
-    <aside>
-        <section id="achievements">
-            <h2>个人成就</h2>
-            <ul>
-                <li>[证书/奖项1]</li>
-                <li>[证书/奖项2]</li>
-                <!-- 添加更多成就 -->
-            </ul>
-        </section>
-
-        <section id="social-media">
-            <h2>社交媒体</h2>
-            <ul>
-                <li><a href="#">微信</a></li>
-                <li><a href="#">微博</a></li>
-                <li><a href="#">LinkedIn</a></li>
-                <!-- 添加更多社交媒体链接 -->
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>快速联系</h2>
-            <form>
-                <input type="email" placeholder="您的邮箱" required>
-                <textarea placeholder="您的留言" required></textarea>
-                <button type="submit">发送</button>
-            </form>
-        </section>
-    </aside>
-
-    <footer>
-        <p>&copy; 2024 [姓名]. 保留所有权利。</p>
-        <p>网页设计：[设计者名称]</p>
-        <a href="#" id="back-to-top">返回顶部</a>
-    </footer>
-
-    <script src="script.js"></script>
+    <div class="welcome-container">
+        <h1>欢迎光临</h1>
+        <a href="主页链接" class="btn">进入主页</a>
+    </div>
 </body>
-
 </html>
