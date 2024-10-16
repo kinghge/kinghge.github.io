@@ -24,6 +24,20 @@
             margin-bottom: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
         }
         .btn {
             display: inline-block;
@@ -34,14 +48,46 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         .btn:hover {
             background-color: #9b59b6;
         }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
     </style>
 </head>
 <body>
-    <h1>个人介绍</h1>
+    <h1 class="fade-in">个人介绍</h1>
     
     <div class="section">
         <h2>关于我</h2>
@@ -71,8 +117,33 @@
         <h2>联系方式</h2>
         <p>电子邮件: your.email@example.com</p>
         <p>社交媒体: [链接到您的社交媒体账号]</p>
+        <p>github: <a href="https://github.com/kinghge">kinghge</a></p>
     </div>
     
     <a href="index.html" class="btn">返回首页</a>
+    
+    <script>
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        function handleScroll() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (isElementInViewport(section)) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+    </script>
 </body>
 </html>

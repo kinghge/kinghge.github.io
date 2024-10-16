@@ -44,18 +44,59 @@
             border-radius: 5px;
             font-weight: bold;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         .btn:hover {
             background-color: #3498db;
             color: white;
         }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        /* 添加新的动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>探索人工智能的世界</h1>
-        <p>人工智能（AI）是计算机科学的一个分支，致力于创造智能机器，能够执行通常需要人类智能的任务。AI涵盖了机器学习、深度学习、自然语言处理等多个领域，正在改变我们的生活方式和工作方式。</p>
-        <div class="button-container">
+        <h1 class="fade-in">探索人工智能的世界</h1>
+        <p class="fade-in">人工智能（AI）是计算机科学的一个分支，致力于创造智能机器，能够执行通常需要人类智能的任务。AI涵盖了机器学习、深度学习、自然语言处理等多个领域，正在改变我们的生活方式和工作方式。</p>
+        <div class="button-container fade-in">
             <a href="cnn_visualization.html" class="btn">cnn可视化</a>
             <a href="industrial_inspection.html" class="btn">AI应用实例</a>
         </div>
