@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNN可视化</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: white;
+            color: #3498db;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .btn:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        #visualization-area {
+            width: 100%;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CNN可视化</h1>
+        <p>卷积神经网络（CNN）是深度学习中的一种重要算法，广泛应用于图像识别和处理。通过可视化CNN的各个层，我们可以更好地理解网络的工作原理。</p>
+        <div class="button-container">
+            <a href="https://poloclub.github.io/cnn-explainer/" class="btn" >cnn Explainer</a>
+            <a href="http://alexlenail.me/NN-SVG/LeNet.html" class="btn" >NN-SVG</a>
+            <a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html" class="btn" >ConvnetJS</a>
+        </div>
+        <!-- <div id="visualization-area">
+            点击上方按钮查看不同层的可视化
+        </div> -->
+    </div>
+
+    <!-- <script>
+        function showVisualization(layer) {
+            const visualizationArea = document.getElementById('visualization-area');
+            visualizationArea.innerHTML = `${layer}的可视化将在这里显示`;
+            // 这里可以添加更复杂的可视化逻辑
+        }
+    </script> -->
+</body>
+</html>
