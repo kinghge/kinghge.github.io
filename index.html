@@ -72,13 +72,21 @@
             0% { transform: translateY(100vh) rotate(0deg); }
             100% { transform: translateY(-100vh) rotate(360deg); }
         }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="floating-circles"></div>
     <div class="welcome-container">
         <h1>欢迎来到kinghge的网页</h1>
-        <a href="./open-iad_cn.html" class="btn">open-iad</a>
+        <div class="button-container">
+            <a href="./open-iad_cn.html" class="btn">open-iad</a>
+            <a href="./cfa/cfa.html" class="btn">cfa</a>
+        </div>
     </div>
 
     <script>
