@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,31 +15,42 @@
             padding: 20px;
             background-color: #f4f4f4;
         }
+
         h1 {
             color: #8e44ad;
             text-align: center;
         }
+
         .section {
             background-color: white;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
+
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .fade-in {
             animation: fadeIn 1s ease-in;
         }
+
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -51,9 +63,11 @@
             position: relative;
             overflow: hidden;
         }
+
         .btn:hover {
             background-color: #9b59b6;
         }
+
         .btn::after {
             content: '';
             position: absolute;
@@ -67,43 +81,59 @@
             transform: scale(1, 1) translate(-50%);
             transform-origin: 50% 50%;
         }
+
         @keyframes ripple {
             0% {
                 transform: scale(0, 0);
                 opacity: 1;
             }
+
             20% {
                 transform: scale(25, 25);
                 opacity: 1;
             }
+
             100% {
                 opacity: 0;
                 transform: scale(40, 40);
             }
         }
+
         .btn:focus:not(:active)::after {
             animation: ripple 1s ease-out;
         }
+
+        .github-btn {
+            background-color: #333;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        .github-btn:hover {
+            background-color: #555;
+        }
     </style>
 </head>
+
 <body>
     <h1 class="fade-in">个人介绍</h1>
-    
+
     <div class="section">
         <h2>关于我</h2>
         <p>这里是您的个人简介。您可以介绍自己的背景、兴趣爱好、专业技能等。</p>
     </div>
-    
+
     <div class="section">
         <h2>教育背景</h2>
-        <p>在这里列出您的教育经历,包括学校、专业、学位等信息。</p>
+        <p>河南工程学院 物联网工程</p>
     </div>
-    
+
     <div class="section">
         <h2>工作经验</h2>
-        <p>如果有相关工作经验,可以在这里详细描述。</p>
+        <p></p>
     </div>
-    
+
     <div class="section">
         <h2>技能</h2>
         <ul>
@@ -112,16 +142,16 @@
             <li>技能3</li>
         </ul>
     </div>
-    
+
     <div class="section">
         <h2>联系方式</h2>
-        <p>电子邮件: your.email@example.com</p>
-        <p>社交媒体: [链接到您的社交媒体账号]</p>
-        <p>github: <a href="https://github.com/kinghge">kinghge</a></p>
+        <p>电子邮件: kinghge007@outlook.com</p>
+        <p>社交媒体: </p>
+        <p>GitHub: <a href="https://github.com/kinghge" class="btn github-btn">kinghge</a></p>
     </div>
-    
+
     <a href="index.html" class="btn">返回首页</a>
-    
+
     <script>
         function isElementInViewport(el) {
             const rect = el.getBoundingClientRect();
@@ -132,7 +162,7 @@
                 rect.right <= (window.innerWidth || document.documentElement.clientWidth)
             );
         }
-        
+
         function handleScroll() {
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -141,9 +171,10 @@
                 }
             });
         }
-        
+
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('load', handleScroll);
     </script>
 </body>
+
 </html>
