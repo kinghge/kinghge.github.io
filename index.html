@@ -115,11 +115,41 @@
             justify-content: center;
             gap: 20px;
         }
+
+        .formula {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            white-space: nowrap;
+            transition: opacity 1s;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(0);
+            }
+        }
     </style>
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <div class="floating-circles"></div>
+    <div class="floating-formulas"></div>
     <div class="welcome-container">
         <h1>欢迎来到kinghge的网页</h1>
         <div class="button-container">
@@ -130,10 +160,77 @@
     </div>
 
     <script>
-        function createCircles() {
-            const container = document.querySelector('.floating-circles');
-            for (let i = 0; i < 20; i++) {
-                const circle = document.createElement('div');
-                circle.classList.add('circle');
-                circle.style.left = `${Math.random() * 100}%`;
-                circle.style.width = circle.style.height = `${Math.random() * 50 
+        const formulaStrings = [
+            '\\(y = wx + b\\)',
+            '\\(\\sigma(z) = \\frac{1}{1+e^{-z}}\\)',
+            '\\(\\text{ReLU}(x) = \\max(0, x)\\)',
+            '\\(H = -\\sum p \\log p\\)',
+            '\\(\\vec{a} \\cdot \\vec{b} = |a||b|\\cos\\theta\\)',
+            '\\(P(A|B) = \\frac{P(B|A)P(A)}{P(B)}\\)',
+            '\\(\\frac{\\partial J}{\\partial w} = \\frac{1}{m}X^T(Xw-y)\\)',
+            '\\(f(x) = \\frac{1}{\\sqrt{2\\pi}}e^{-\\frac{x^2}{2}}\\)',
+            '\\(L = \\frac{1}{n}\\sum(y - \\hat{y})^2\\)',
+            '\\(\\hat{y} = \\text{softmax}(Wx + b)\\)'
+        ];
+
+        function createFormula(container, x, y) {
+            const formula = document.createElement('div');
+            formula.classList.add('formula');
+            formula.innerHTML = formulaStrings[Math.floor(Math.random() * formulaStrings.length)];
+            formula.style.left = `${x}%`;
+            formula.style.top = `${y}%`;
+            const duration = Math.random() * 20 + 40; // 40-60秒
+            formula.style.animationDuration = `${duration}s`;
+            formula.style.animationDelay = `${-Math.random() * duration}s`;
+            container.appendChild(formula);
+            return formula;
+        }
+
+        function createInitialFormulas() {
+            const container = document.querySelector('.floating-formulas');
+            const columns = 5;
+            const rows = 4;
+
+            for (let i = 0; i < columns * rows; i++) {
+                const column = i % columns;
+                const row = Math.floor(i / columns);
+                const x = (column / columns) * 100 + Math.random() * 10 - 5;
+                const y = (row / rows) * 100 + Math.random() * 10 - 5;
+                createFormula(container, x, y);
+            }
+        }
+
+        function updateFormulas() {
+            const container = document.querySelector('.floating-formulas');
+            const formulaElements = container.querySelectorAll('.formula');
+            
+            formulaElements.forEach(formula => {
+                if (Math.random() < 0.1) { // 10% 的概率更新公式
+                    formula.style.opacity = '0';
+                    setTimeout(() => {
+                        const x = Math.random() * 100;
+                        const y = 100 + Math.random() * 20; // 从底部稍微偏上的位置开始
+                        formula.innerHTML = formulaStrings[Math.floor(Math.random() * formulaStrings.length)];
+                        formula.style.left = `${x}%`;
+                        formula.style.top = `${y}%`;
+                        formula.style.opacity = '1';
+                        const duration = Math.random() * 20 + 40;
+                        formula.style.animationDuration = `${duration}s`;
+                        formula.style.animationDelay = '0s';
+                        MathJax.typesetPromise([formula]); // 重新渲染更新的公式
+                    }, 1000);
+                }
+            });
+        }
+
+        createInitialFormulas();
+
+        window.addEventListener('load', function() {
+            MathJax.typesetPromise().then(() => {
+                setInterval(updateFormulas, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>
