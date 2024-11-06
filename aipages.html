@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI 缺陷检测算法</title>
+    <style>
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: #f6f8fa;
+        }
+        .algorithm-card {
+            border: 1px solid #e1e4e8;
+            border-radius: 10px;
+            padding: 24px;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .algorithm-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .algorithm-title {
+            color: #0366d6;
+            margin: 0 0 16px 0;
+            font-size: 22px;
+            font-weight: 600;
+            border-bottom: 2px solid #e1e4e8;
+            padding-bottom: 8px;
+        }
+        .algorithm-description {
+            color: #24292e;
+            margin: 8px 0;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .algorithm-stats {
+            color: #586069;
+            font-size: 14px;
+            margin: 16px 0;
+            padding: 12px;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+        }
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .code-btn {
+            background-color: #238636;
+            color: white;
+        }
+        .code-btn:hover {
+            background-color: #2ea043;
+        }
+        .paper-btn {
+            background-color: #0969da;
+            color: white;
+        }
+        .paper-btn:hover {
+            background-color: #1a7fec;
+        }
+        .translate-btn {
+            background-color: #6e7781;
+            color: white;
+        }
+        .translate-btn:hover {
+            background-color: #7d8590;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">open-IAD</h2>
+        <p class="algorithm-description">
+            IM-IAD: Industrial Image Anomaly Detection Benchmark in Manufacturing
+        </p>
+        <div class="algorithm-stats"> LAB • 基准模型  • 无监督检测</div>
+        <div class="button-group">
+            <a href="https://github.com/M-3LAB/open-iad" class="button code-btn">
+                <span>📄 github</span>
+            </a>
+            <a href="https://arxiv.org/pdf/2301.13359" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="./open-iad/open-iad_cn.html" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">CFA</h2>
+        <p class="algorithm-description">
+
+        </p>
+        <div class="algorithm-stats"> 耦合超球体 • resnet18  • 无监督检测</div>
+        <div class="button-group">
+            <a href="https://github.com/sungwool/cfa_for_anomaly_localization" class="button code-btn">
+                <span>📄 guthub</span>
+            </a>
+            <a href="https://arxiv.org/pdf/2206.04325" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="./cfa/cfa.html" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">CS-flow</h2>
+        <p class="algorithm-description">
+            Cross-Scale Flow for Anomaly Detection
+        </p>
+        <div class="algorithm-stats"> 交叉尺度流 • 高权重  • 无监督检测</div>
+        <div class="button-group">
+            <a href="https://github.com/marco-rudolph/cs-flow" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/pdf/2110.02855v1" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="./csflow/csflow.html" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">卷积神经网络 (CNN)</h2>
+        <p class="algorithm-description">
+            CNN是缺陷检测中最基础和广泛使用的深度学习算法。通过多层卷积运算提取图像特征，结合池化层和全连接层实现缺陷分类。
+            典型架构包括ResNet、VGG等，可以有效识别产品表面的各类缺陷特征。适用于有大量标注数据的场景。
+        </p>
+        <div class="algorithm-stats">计算效率：高 • 训练难度：中等 • 适用场景：监督学习</div>
+        <div class="button-group">
+            <a href="https://github.com/example/cnn-defect" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/example" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/translate" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">自编码器 (AutoEncoder)</h2>
+        <p class="algorithm-description">
+            自编码器通过无监督学习方式学习正常样本的特征分布，对异常样品进行检测。其特点是只需要正常样本即可训练，
+            通过重建误差判断缺陷。包括传统自编码器、变分自编码器(VAE)和卷积自编码器(CAE)等变体。特别适合缺陷样本稀少的场景。
+        </p>
+        <div class="algorithm-stats">训练数据要求：低 • 检测方式：重建误差 • 适用场景：异常检测</div>
+        <div class="button-group">
+            <a href="https://github.com/example/autoencoder" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/vae-paper" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/vae-cn" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">Transformer视觉检测</h2>
+        <p class="algorithm-description">
+            基于Vision Transformer的缺陷检测方法，通过自注意力机制捕捉图像的全局和局部特征。相比传统CNN，
+            具有更强的特征提取能力和更好的长距离依赖建模能力。支持多尺度特征融合，适合复杂场景下的缺陷检测任务。
+        </p>
+        <div class="algorithm-stats">特征提取：强 • 计算复杂度：高 • 适用场景：复杂缺陷</div>
+        <div class="button-group">
+            <a href="https://github.com/example/vit-defect" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/vit-paper" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/vit-cn" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">YOLOv5缺陷检测</h2>
+        <p class="algorithm-description">
+            基于YOLOv5的实时缺陷检测算法，采用单阶段检测架构，能够同时实现缺陷定位和分类。
+            具有较快的检测速度和较高的准确率，支持多尺度预测，适合工业生产线的实时检测需求。
+            通过anchor-based的方式进行目标检测，支持多类别缺陷的同时检测。
+        </p>
+        <div class="algorithm-stats">检测速度：快 • 定位精度：高 • 适用场景：实时检测</div>
+        <div class="button-group">
+            <a href="https://github.com/example/yolo-defect" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/yolo-paper" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/yolo-cn" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">小样本缺陷检测 (Few-Shot)</h2>
+        <p class="algorithm-description">
+            基于元学习的小样本缺陷检测方法，包括原型网络和孪生网络等架构。通过度量学习的方式，
+            实现仅用少量样本就能快速适应新的缺陷类型。特别适合产品种类多、样本获取困难的场景，
+            支持快速切换检测对象。
+        </p>
+        <div class="algorithm-stats">样本需求：极少 • 适应能力：强 • 适用场景：多变产线</div>
+        <div class="button-group">
+            <a href="https://github.com/example/few-shot" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/few-shot-paper" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/few-shot-cn" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="algorithm-card">
+        <h2 class="algorithm-title">GAN异常检测</h2>
+        <p class="algorithm-description">
+            基于生成对抗网络的缺陷检测方法，通过学习正常样本的分布来识别异常。结合判别器和生成器的双重检测机制，
+            能够更好地捕捉细微的异常特征。适用于无标注数据或只有正常样本的场景，可以实现半监督和无监督的缺陷检测。
+        </p>
+        <div class="algorithm-stats">检测灵敏度：高 • 训练难度：较高 • 适用场景：无监督检测</div>
+        <div class="button-group">
+            <a href="https://github.com/example/gan-defect" class="button code-btn">
+                <span>📄 示例代码</span>
+            </a>
+            <a href="https://arxiv.org/abs/gan-paper" class="button paper-btn">
+                <span>📚 原始论文</span>
+            </a>
+            <a href="https://example.com/gan-cn" class="button translate-btn">
+                <span>🔤 中文译文</span>
+            </a>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

@@ -8,27 +8,34 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            height: 100vh;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
         }
         .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 800px;
-            padding: 20px;
+            padding: 40px;
+            margin: 20px;
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
         p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         .button-container {
             display: flex;
@@ -37,37 +44,38 @@
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: white;
-            color: #2ecc71;
+            padding: 12px 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #1a2a6c;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 25px;
             font-weight: bold;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         .btn:hover {
-            background-color: #2ecc71;
+            background-color: #1a2a6c;
             color: white;
-            transform: scale(1.1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* 添加新的动画效果 */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .fade-in {
-            animation: fadeIn 1.5s ease-in;
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideIn {
-            from { transform: translateY(50px); opacity: 0; }
+            from { transform: translateY(30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
 
+        .fade-in {
+            animation: fadeIn 1.2s ease-out;
+        }
+
         .slide-in {
-            animation: slideIn 1s ease-out;
+            animation: slideIn 1.2s ease-out;
         }
     </style>
 </head>
@@ -76,9 +84,7 @@
         <h1 class="fade-in">AI在工业检测中的应用</h1>
         <p class="slide-in">人工智能在工业检测领域发挥着越来越重要的作用。通过机器视觉和深度学习技术，AI系统能够快速、准确地识别产品缺陷，提高生产效率和产品质量。这种自动化检测不仅减少了人为错误，还能24小时不间断工作，大大提高了生产线的效率。</p>
         <div class="button-container slide-in">
-            <a href="./open-iad/open-iad_cn.html" class="btn">open-iad</a>
-            <a href="cfa/cfa.html" class="btn">cfa</a>
-            <a href="csflow/csflow.html" class="btn">csflow</a>
+            <a href="aipages.html" class="btn">关于缺陷检测的论文</a>
         </div>
     </div>
 </body>
