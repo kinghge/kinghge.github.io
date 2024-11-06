@@ -9,51 +9,120 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #3498db, #2980b9);
+            background: linear-gradient(45deg, #0a192f, #112240, #233554);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
+            position: relative;
+            overflow: hidden;
         }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: backgroundMove 60s linear infinite;
+            transform: rotate(45deg);
+        }
+
+        @keyframes backgroundMove {
+            0% { transform: translateY(0) rotate(45deg); }
+            100% { transform: translateY(-50%) rotate(45deg); }
+        }
+
         .container {
             text-align: center;
             max-width: 800px;
-            padding: 20px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
         }
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 3em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #64ffda, #48bfe3, #5390d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
         }
+
         p {
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.5s;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
+
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: white;
-            color: #3498db;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            margin-bottom: 10px;
             position: relative;
             overflow: hidden;
         }
-        .btn:hover {
-            background-color: #3498db;
-            color: white;
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
         }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
         #visualization-area {
             width: 100%;
             height: 400px;
@@ -108,16 +177,30 @@
         .btn:hover::after {
             animation: ripple 1s ease-out;
         }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .container {
+            animation: float 6s ease-in-out infinite;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>CNN可视化</h1>
-        <p>卷积神经网络（CNN）是深度学习中的一种重要算法，广泛应用于图像识别和处理。通过可视化CNN的各个层，我们可以更好地理解网络的工作原理。</p>
+        <p>卷积神经网络（CNN）是深度学习中的一种重要算法，广泛应用于图像识别和处理。
+           通过可视化CNN的各个层，我们可以更好地理解网络的工作原理。
+           <br><br>
+           点击下方按钮，探索CNN的奥秘！
+        </p>
         <div class="button-container">
-            <a href="https://poloclub.github.io/cnn-explainer/" class="btn" >cnn Explainer</a>
-            <a href="http://alexlenail.me/NN-SVG/LeNet.html" class="btn" >NN-SVG</a>
-            <a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html" class="btn" >ConvnetJS</a>
+            <a href="https://poloclub.github.io/cnn-explainer/" class="btn">CNN 交互式探索</a>
+            <a href="http://alexlenail.me/NN-SVG/LeNet.html" class="btn">网络结构可视化</a>
+            <a href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/image_regression.html" class="btn">实时训练演示</a>
         </div>
         <!-- <div id="visualization-area">
             点击上方按钮查看不同层的可视化

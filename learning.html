@@ -34,37 +34,55 @@
         }
         .topic {
             margin-bottom: 30px;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e1e4e8;
+            transition: all 0.3s ease;
         }
         .topic:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         .btn {
             display: inline-block;
             background: #3498db;
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
         .btn:hover {
             background: #2980b9;
         }
         .icon {
-            font-size: 2em;
-            margin-right: 10px;
-            vertical-align: middle;
+            font-size: 1.8em;
+            color: #3498db;
+            margin-right: 15px;
         }
         .btn-small {
             padding: 5px 10px;
             font-size: 0.9em;
             vertical-align: middle;
             margin-left: 10px;
+        }
+        .topic h2 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+        .topic p {
+            margin: 15px 0;
+            color: #555;
+            font-size: 1.1em;
+        }
+        .book-recommendation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -82,13 +100,15 @@
         <div class="topic">
             <h2><i class="fas fa-brain icon"></i>机器学习</h2>
             <p>我探索了各种机器学习算法和技术,包括监督学习、无监督学习和强化学习。通过实际案例,深入理解了数据分析和预测模型的构建。</p>
-            <p>《机器学习》</p>
-            <p>
-                推荐在b站上观看吴恩达老师的视频
-                <a href="https://www.bilibili.com/video/BV1Pa411X76s/?spm_id_from=333.337.search-card.all.click" class="btn btn-small" target="_blank">
-                    <i class="fas fa-external-link-alt"></i> 观看视频
-                </a>
-            </p>
+            <div class="book-recommendation">
+                <p><strong>推荐课程：</strong>《机器学习》</p>
+                <p>
+                    推荐在b站上观看吴恩达老师的视频
+                    <a href="https://www.bilibili.com/video/BV1Pa411X76s" class="btn btn-small" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> 观看视频
+                    </a>
+                </p>
+            </div>
             <a href="machine_learning.html" class="btn">查看机器学习心得</a>
         </div>
         

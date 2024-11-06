@@ -4,85 +4,122 @@
     <title>AI 缺陷检测算法</title>
     <style>
         body {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: #f6f8fa;
+            background-color: #f8fafc;
+            line-height: 1.6;
         }
+
+        .page-header {
+            text-align: center;
+            margin: 0 0 60px 0;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            color: #1a202c;
+            margin-bottom: 16px;
+        }
+        
+        .page-description {
+            color: #4a5568;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         .algorithm-card {
-            border: 1px solid #e1e4e8;
-            border-radius: 10px;
-            padding: 24px;
-            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 28px;
+            margin: 30px 0;
             background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
         .algorithm-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.08);
         }
+
         .algorithm-title {
-            color: #0366d6;
-            margin: 0 0 16px 0;
-            font-size: 22px;
+            color: #2c5282;
+            margin: 0 0 20px 0;
+            font-size: 24px;
             font-weight: 600;
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
         }
+
         .algorithm-description {
-            color: #24292e;
-            margin: 8px 0;
-            line-height: 1.6;
+            color: #2d3748;
+            margin: 16px 0;
+            line-height: 1.7;
             font-size: 16px;
         }
+
         .algorithm-stats {
-            color: #586069;
+            color: #4a5568;
             font-size: 14px;
-            margin: 16px 0;
-            padding: 12px;
-            background-color: #f6f8fa;
-            border-radius: 6px;
+            margin: 20px 0;
+            padding: 14px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
-        .button-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
+
         .button {
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
             font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+            font-size: 15px;
+            color: white;
             text-decoration: none;
-            font-size: 14px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            margin-right: 12px;
+            transition: all 0.2s ease;
         }
+
+        .button span {
+            margin-left: 4px;
+        }
+
+        .button:last-child {
+            margin-right: 0;
+        }
+
         .code-btn {
-            background-color: #238636;
-            color: white;
+            background-color: #2f855a;
         }
         .code-btn:hover {
-            background-color: #2ea043;
+            background-color: #276749;
         }
+        
         .paper-btn {
-            background-color: #0969da;
-            color: white;
+            background-color: #3182ce;
         }
         .paper-btn:hover {
-            background-color: #1a7fec;
+            background-color: #2c5282;
         }
+        
         .translate-btn {
-            background-color: #6e7781;
-            color: white;
+            background-color: #4a5568;
         }
         .translate-btn:hover {
-            background-color: #7d8590;
+            background-color: #2d3748;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
     </style>
 </head>
@@ -169,7 +206,7 @@
     <div class="algorithm-card">
         <h2 class="algorithm-title">自编码器 (AutoEncoder)</h2>
         <p class="algorithm-description">
-            自编码器通过无监督学习方式学习正常样本的特征分布，对异常样品进行检测。其特点是只需要正常样本即可训练，
+            自编码器通过无监督学习方式学习正常样本的特征分布，对异常样品进行检测。其特点是只需要正常样本���可训练，
             通过重建误差判断缺陷。包括传统自编码器、变分自编码器(VAE)和卷积自编码器(CAE)等变体。特别适合缺陷样本稀少的场景。
         </p>
         <div class="algorithm-stats">训练数据要求：低 • 检测方式：重建误差 • 适用场景：异常检测</div>
