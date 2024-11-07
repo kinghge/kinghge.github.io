@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            background: linear-gradient(135deg, #e9d5ff, #d8b4fe, #c084fc);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -29,23 +29,28 @@
             font-size: 3em;
             margin-bottom: 20px;
             animation: slideDown 1.5s ease-out;
+            color: #4c1d95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            background-color: white;
-            color: #8e44ad;
+            padding: 12px 24px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #9333ea;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             animation: pulse 2s infinite;
         }
 
         .btn:hover {
-            background-color: #8e44ad;
+            background-color: #9333ea;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             animation: none;
         }
 
@@ -113,12 +118,12 @@
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
         }
 
         .formula {
             position: absolute;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(107, 33, 168, 0.3);
             font-size: 18px;
             white-space: nowrap;
             transition: opacity 1s;
@@ -132,6 +137,89 @@
             100% {
                 transform: translateY(-100vh) translateX(0);
             }
+        }
+
+        /* AI 特效区域样式 */
+        .ai-features {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .ai-icons {
+            display: flex;
+            gap: 60px;
+            margin-top: 20px;
+        }
+
+        .ai-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #6b21a8;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .ai-icon i {
+            font-size: 2em;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-icon span {
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .ai-icon:hover i {
+            transform: scale(1.2);
+        }
+
+        /* 为每个图标设置不同的动画延迟 */
+        .ai-icon:nth-child(1) { animation-delay: 0.2s; }
+        .ai-icon:nth-child(2) { animation-delay: 0.4s; }
+        .ai-icon:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 添加动态连线背景 */
+        .network-background {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.1;
+            background: 
+                linear-gradient(90deg, #6b21a8 1px, transparent 1px) 0 0 / 20px 20px,
+                linear-gradient(#6b21a8 1px, transparent 1px) 0 0 / 20px 20px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(20px);
+            }
+
         }
     </style>
     <script>
@@ -230,6 +318,19 @@
                 setInterval(updateFormulas, 2000);
             });
         });
+    </script>
+
+    <!-- 添加动态效果的 JavaScript -->
+    <script>
+    document.querySelectorAll('.ai-icon').forEach(icon => {
+        icon.addEventListener('mouseover', () => {
+            icon.querySelector('i').style.color = '#9333ea';
+        });
+        
+        icon.addEventListener('mouseout', () => {
+            icon.querySelector('i').style.color = '#6b21a8';
+        });
+    });
     </script>
 </body>
 
