@@ -1,127 +1,226 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>学习经历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #f8fafc;
             margin: 0;
             padding: 20px;
-            background-color: #f0f2f5;
-            color: #333;
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #2980b9;
-        }
-        .topic {
-            margin-bottom: 30px;
+
+        .learning {
+            background: linear-gradient(145deg, #ffffff, #f5f7ff);
+            border-radius: 15px;
             padding: 25px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #e1e4e8;
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
         }
-        .topic:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .btn {
-            display: inline-block;
-            background: #3498db;
-            color: #fff;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        .btn:hover {
-            background: #2980b9;
-        }
-        .icon {
-            font-size: 1.8em;
-            color: #3498db;
-            margin-right: 15px;
-        }
-        .btn-small {
-            padding: 5px 10px;
-            font-size: 0.9em;
-            vertical-align: middle;
-            margin-left: 10px;
-        }
-        .topic h2 {
-            margin-top: 0;
+
+        .learning-header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e6e9f5;
+            padding-bottom: 15px;
         }
-        .topic p {
+
+        .learning-header h2 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .learning-icon {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .learning-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .learning-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .learning-item {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            width: 100%;
+        }
+
+        .learning-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .learning-item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .learning-item-header i {
+            font-size: 24px;
+            margin-right: 15px;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .learning-item-header h3 {
+            color: #2d3748;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .learning-item p {
+            color: #4a5568;
+            line-height: 1.6;
             margin: 15px 0;
-            color: #555;
-            font-size: 1.1em;
         }
+
+        .learning-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .learning-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         .book-recommendation {
-            background: #f8f9fa;
+            background: #edf2ff;
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
         }
+
+        .book-recommendation p {
+            margin: 10px 0;
+            color: #4338ca;
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9em;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-small:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .learning-grid {
+                max-width: 100%;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>我的学习经历</h1>
-        <h2>还没有完善，敬请期待...</h2>
-        <div class="topic">
-            <h2><i class="fas fa-camera icon"></i>OpenCV</h2>
-            <p>在计算机视觉领域,我深入学习了OpenCV库。通过实践项目,掌握了图像处理和计算机视觉的核心概念。</p>
-            <a href="opencv.html" class="btn">查看OpenCV心得</a>
-        </div>
-        
-        <div class="topic">
-            <h2><i class="fas fa-brain icon"></i>机器学习</h2>
-            <p>我探索了各种机器学习算法和技术,包括监督学习、无监督学习和强化学习。通过实际案例,深入理解了数据分析和预测模型的构建。</p>
-            <div class="book-recommendation">
-                <p><strong>推荐课程：</strong>《机器学习》</p>
-                <p>
-                    推荐在b站上观看吴恩达老师的视频
-                    <a href="https://www.bilibili.com/video/BV1Pa411X76s" class="btn btn-small" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> 观看视频
-                    </a>
-                </p>
+    <div class="learning">
+        <div class="learning-header">
+            <h2>学习经历</h2>
+            <div class="learning-icon">
+                <i class="fas fa-graduation-cap"></i>
             </div>
-            <a href="machine_learning.html" class="btn">查看机器学习心得</a>
         </div>
-        
-        <div class="topic">
-            <h2><i class="fas fa-network-wired icon"></i>深度学习</h2>
-            <p>我学习了神经网络和深度学习的基础知识,包括卷积神经网络(CNN)和循环神经网络(RNN)。通过项目实践,体验了AI在图像识别和自然语言处理中的强大能力。</p>
-            <p>《深度学习》</p>
-            <p>推荐书籍《鱼书》《深度学习入门》</p>
-            
-            <a href="deep_learning.html" class="btn">查看深度学习心得</a>
+
+        <div class="learning-grid">
+            <div class="learning-item">
+                <div class="learning-item-header">
+                    <i class="fas fa-camera"></i>
+                    <h3>OpenCV</h3>
+                </div>
+                <p>在计算机视觉领域，我深入学习了OpenCV库。通过实践项目，掌握了图像处理和计算机视觉的核心概念。</p>
+                <div class="book-recommendation">
+                    <p><strong>推荐书籍：</strong></p>
+                    <p>《学习OpenCV 3》</p>
+                    <p>《OpenCV计算机视觉编程攻略》</p>
+                    <p>
+                        推荐在b站上观看OpenCV教程
+                        <a href="https://www.bilibili.com/video/BV1PV411774y" class="btn-small" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> 观看视频
+                        </a>
+                    </p>
+                </div>
+                <a href="opencv.html" class="learning-btn">查看OpenCV心得</a>
+            </div>
+
+            <div class="learning-item">
+                <div class="learning-item-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>机器学习</h3>
+                </div>
+                <p>我探索了各种机器学习算法和技术，包括监督学习、无监督学习和强化学习。通过实际案例，深入理解了数据分析和预测模型的构建。</p>
+                <div class="book-recommendation">
+                    <p><strong>推荐课程：</strong>《机器学习》</p>
+                    <p>
+                        推荐在b站上观看吴恩达老师的视频
+                        <a href="https://www.bilibili.com/video/BV1Pa411X76s" class="btn-small" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> 观看视频
+                        </a>
+                    </p>
+                </div>
+                <a href="machine_learning.html" class="learning-btn">查看机器学习心得</a>
+            </div>
+
+            <div class="learning-item">
+                <div class="learning-item-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>深度学习</h3>
+                </div>
+                <p>我学习了神经网络和深度学习的基础知识，包括卷积神经网络(CNN)和循环神经网络(RNN)。通过项目实践，体验了AI在图像识别和自然语言处理中的强大能力。</p>
+                <div class="book-recommendation">
+                    <p><strong>推荐书籍：</strong></p>
+                    <p>《深度学习》</p>
+                    <p>《鱼书》《深度学习入门》</p>
+                </div>
+                <a href="deep_learning.html" class="learning-btn">查看深度学习心得</a>
+            </div>
         </div>
-        
-        <a href="index.html" class="btn"><i class="fas fa-home"></i> 返回主页</a>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="learning-btn">
+                <i class="fas fa-home"></i> 返回主页
+            </a>
+        </div>
     </div>
 </body>
 </html>

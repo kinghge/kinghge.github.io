@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #e9d5ff, #d8b4fe, #c084fc);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,14 +24,34 @@
             text-align: center;
             color: white;
             animation: fadeIn 2s ease-in-out;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 20px;
-            animation: slideDown 1.5s ease-out;
-            color: #4c1d95;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-shadow: none;
+            font-weight: 800;
+            letter-spacing: -1px;
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
         }
 
         .btn {
@@ -45,6 +65,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             animation: pulse 2s infinite;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 30px;
+            font-size: 1.1em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn:hover {
@@ -53,6 +80,10 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
             animation: none;
+            background: white;
+            color: #4f46e5;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .floating-circles {
@@ -124,8 +155,8 @@
 
         .formula {
             position: absolute;
-            color: rgba(107, 33, 168, 0.3);
-            font-size: 18px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 20px;
             white-space: nowrap;
             transition: opacity 1s;
             animation: float linear infinite;
@@ -216,10 +247,11 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            opacity: 0.1;
-            background:
-                linear-gradient(90deg, #6b21a8 1px, transparent 1px) 0 0 / 20px 20px,
-                linear-gradient(#6b21a8 1px, transparent 1px) 0 0 / 20px 20px;
+            opacity: 0.05;
+            background-size: 30px 30px;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
             animation: moveGrid 20s linear infinite;
         }
 
@@ -258,7 +290,7 @@
             <a href="learning.html" class="btn">学习经历</a>
         </div>
     </div>
-
+    
     <script>
         const formulaStrings = [
             '\\(y = wx + b\\)',

@@ -10,115 +10,102 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #2c3e50, #3498db, #2980b9);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            overflow: hidden;
         }
-        .container {
+
+        .welcome-container {
             text-align: center;
-            max-width: 800px;
-            padding: 40px;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
-            font-size: 3em;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: slideDown 1.5s ease-out;
+            color: white;
+            text-shadow: none;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
+
         p {
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 30px;
         }
+
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
         }
+
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             font-size: 1.1em;
-            backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .btn:hover {
             background: white;
-            color: #2c3e50;
+            color: #4f46e5;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .btn::after {
-            content: '';
+
+        .network-background {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
+            top: -100px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.05;
+            background-size: 30px 30px;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            animation: moveGrid 20s linear infinite;
         }
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 1;
-            }
-            20% {
-                transform: scale(25, 25);
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: scale(40, 40);
-            }
-        }
-        .btn:focus:not(:active)::after {
-            animation: ripple 1s ease-out;
-        }
-        /* 添加新的动画效果 */
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .button-container .btn:nth-child(1) { animation-delay: 0.3s; }
-        .button-container .btn:nth-child(2) { animation-delay: 0.5s; }
-        .button-container .btn:nth-child(3) { animation-delay: 0.7s; }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes moveGrid {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(20px); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="network-background"></div>
+    <div class="welcome-container">
         <h1 class="fade-in">探索人工智能的世界</h1>
         <p class="fade-in">人工智能（AI）是计算机科学的一个分支，致力于创造智能机器，能够执行通常需要人类智能的任务。AI涵盖了机器学习、深度学习、自然语言处理等多个领域，正在改变我们的生活方式和工作方式。</p>
         <div class="button-container">
