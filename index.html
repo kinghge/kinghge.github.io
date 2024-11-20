@@ -1,380 +1,501 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎</title>
-    <link rel="icon" href="https://ui-avatars.com/api/?name=K&background=8e44ad&color=fff&size=128&bold=true&format=png"
-        type="image/png">
+    <title>AI探索实验室</title>
     <style>
-        body {
+        /* 基础样式优化 */
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed, #9333ea);
-            height: 100vh;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: #0A0F1E;
+            color: #fff;
+        }
+
+        /* 导航栏样式增强 */
+        .nav-bar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            overflow: hidden;
+            padding: 20px 50px;
+            background: rgba(10, 15, 30, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .welcome-container {
-            text-align: center;
-            color: white;
-            animation: fadeIn 2s ease-in-out;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: none;
-            font-weight: 800;
-            letter-spacing: -1px;
-            border-right: 2px solid white;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 1.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: white }
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #9333ea;
-            text-decoration: none;
-            border-radius: 8px;
+        .logo {
+            color: #fff;
+            font-size: 24px;
             font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s infinite;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 15px 30px;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #60A5FA;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        /* 主横幅样式增强 */
+        .hero-section {
+            height: 100vh;
+            background:
+                linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)),
+                url('ai-bg-pattern.png');
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 动态背景效果 */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #60A5FA, #3B82F6, #60A5FA);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            line-height: 1.8;
+            color: #94A3B8;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        /* 研究领域部分重新设计 */
+        .research-section {
+            padding: 120px 50px;
+            position: relative;
+            background: linear-gradient(180deg, #0A0F1E, #1a1f35);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #60A5FA, #3B82F6, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94A3B8;
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            line-height: 1.6;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .research-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .research-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .research-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+
+        .research-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #60A5FA;
+            position: relative;
+        }
+
+        .research-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #60A5FA;
+            border-radius: 2px;
+        }
+
+        .research-card p {
+            color: #94A3B8;
+            line-height: 1.8;
             font-size: 1.1em;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .btn:hover {
-            background-color: #9333ea;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-            animation: none;
-            background: white;
-            color: #4f46e5;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        /* 新增：研究方向图标 */
+        .research-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #60A5FA;
+            opacity: 0.8;
         }
 
-        .floating-circles {
+        /* 新增：技术关键词标签 */
+        .tech-tags {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            background: rgba(96, 165, 250, 0.1);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #60A5FA;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        /* 新增：浮动粒子效果 */
+        .particles {
             position: absolute;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            pointer-events: none;
         }
 
-        .circle {
+        .particle {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 3px;
+            height: 3px;
+            background: rgba(96, 165, 250, 0.5);
             border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-            }
-
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-            }
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .formula {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 20px;
-            white-space: nowrap;
-            transition: opacity 1s;
-            animation: float linear infinite;
+            animation: float 20s linear infinite;
         }
 
         @keyframes float {
             0% {
                 transform: translateY(0) translateX(0);
-            }
-
-            100% {
-                transform: translateY(-100vh) translateX(0);
-            }
-        }
-
-        /* AI 特效区域样式 */
-        .ai-features {
-            position: absolute;
-            bottom: 50px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .ai-icons {
-            display: flex;
-            gap: 60px;
-            margin-top: 20px;
-        }
-
-        .ai-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #6b21a8;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .ai-icon i {
-            font-size: 2em;
-            margin-bottom: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .ai-icon span {
-            font-size: 0.9em;
-            font-weight: 500;
-        }
-
-        .ai-icon:hover i {
-            transform: scale(1.2);
-        }
-
-        /* 为每个图标设置不同的动画延迟 */
-        .ai-icon:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .ai-icon:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .ai-icon:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes fadeIn {
-            from {
                 opacity: 0;
-                transform: translateY(20px);
             }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 添加动态连线背景 */
-        .network-background {
-            position: absolute;
-            top: -100px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            opacity: 0.05;
-            background-size: 30px 30px;
-            background: 
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
-            animation: moveGrid 20s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% {
-                transform: translateY(0);
+            50% {
+                opacity: 0.5;
             }
 
             100% {
-                transform: translateY(20px);
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* 新增：滚动提示 */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
             }
 
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 导航栏部分修改 */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 15, 30, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .nav-links a.active {
+            background: rgba(96, 165, 250, 0.2);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
         }
     </style>
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <div class="floating-formulas"></div>
-    <div class="welcome-container">
-        <h1>欢迎来到kinghge的网页</h1>
-        <div class="button-container">
-            <a href="personal.html" class="btn">个人介绍</a>
-            <a href="ai.html" class="btn">人工智能</a>
-            <a href="learning.html" class="btn">学习经历</a>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="logo">AI探索实验室</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">首页</a>
+            <a href="research.html">研究领域</a>
+            <a href="papers.html">论文</a>
+            <a href="join.html">加入我们</a>
+            <a href="author.html">作者</a>
         </div>
+    </nav>
+
+    <!-- 主横幅 -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>探索人工智能的无限可能</h1>
+            <p>致力于推动AI基础研究，探索机器学习、深度学习、自然语言处理等前沿领域，
+                为人工智能的发展贡献力量</p>
+        </div>
+    </section>
+
+    <!-- 研究领域 -->
+    <section class="research-section" id="research">
+        <h2 class="section-title">研究领域</h2>
+        <p class="section-subtitle">探索人工智能前沿技术，推动基础理论研究与创新应用的发展</p>
+
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="research-icon">🧠</div>
+                <h3>机器学习理论</h3>
+                <p>深入研究机器学习的数学基础、统计理论和优化方法，探索新的学习范式和算法框架</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">深度学习</span>
+                    <span class="tech-tag">强化学习</span>
+                    <span class="tech-tag">优化理论</span>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-icon">🔮</div>
+                <h3>神经网络架构</h3>
+                <p>探索创新的神经网络结构设计，研究网络优化方法，提升模型性能和计算效率</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">注意力机制</span>
+                    <span class="tech-tag">神经架构搜索</span>
+                    <span class="tech-tag">模型压缩</span>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-icon">💡</div>
+                <h3>自然语言处理</h3>
+                <p>研究大规模语言模型、文本理解、机器翻译等领域，推动自然语言处理技术的突破</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Transformer</span>
+                    <span class="tech-tag">语义理解</span>
+                    <span class="tech-tag">多模态学习</span>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-icon">👁️</div>
+                <h3>计算机视觉</h3>
+                <p>研究图像识别、目标检测、场景理解等视觉智能技术，探索视觉认知的本质</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">目标检测</span>
+                    <span class="tech-tag">图像分割</span>
+                    <span class="tech-tag">3D视觉</span>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-icon">🌐</div>
+                <h3>知识图谱</h3>
+                <p>构建和优化大规模知识图谱，研究知识表示、推理与融合方法</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">知识表示</span>
+                    <span class="tech-tag">关系推理</span>
+                    <span class="tech-tag">知识融合</span>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <div class="research-icon">🔄</div>
+                <h3>智能系统</h3>
+                <p>研究AI系统架构、分布式训练、模型部署等关键技术，提升系统效能</p>
+                <div class="tech-tags">
+                    <span class="tech-tag">分布式计算</span>
+                    <span class="tech-tag">模型优化</span>
+                    <span class="tech-tag">边缘计算</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 添加浮动粒子 -->
+    <div class="particles">
+        <!-- JavaScript将动态生成粒子 -->
     </div>
-    
+
+    <!-- 添加滚动提示 -->
+    <div class="scroll-indicator">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#60A5FA">
+            <path d="M7 13l5 5 5-5" stroke-width="2" stroke-linecap="round" />
+        </svg>
+    </div>
+
+
+
     <script>
-        const formulaStrings = [
-            '\\(y = wx + b\\)',
-            '\\(\\sigma(z) = \\frac{1}{1+e^{-z}}\\)',
-            '\\(\\text{ReLU}(x) = \\max(0, x)\\)',
-            '\\(H = -\\sum p \\log p\\)',
-            '\\(\\vec{a} \\cdot \\vec{b} = |a||b|\\cos\\theta\\)',
-            '\\(P(A|B) = \\frac{P(B|A)P(A)}{P(B)}\\)',
-            '\\(\\frac{\\partial J}{\\partial w} = \\frac{1}{m}X^T(Xw-y)\\)',
-            '\\(f(x) = \\frac{1}{\\sqrt{2\\pi}}e^{-\\frac{x^2}{2}}\\)',
-            '\\(L = \\frac{1}{n}\\sum(y - \\hat{y})^2\\)',
-            '\\(\\hat{y} = \\text{softmax}(Wx + b)\\)'
-        ];
-
-        function createFormula(container, x, y) {
-            const formula = document.createElement('div');
-            formula.classList.add('formula');
-            formula.innerHTML = formulaStrings[Math.floor(Math.random() * formulaStrings.length)];
-            formula.style.left = `${x}%`;
-            formula.style.top = `${y}%`;
-            const duration = Math.random() * 20 + 40; // 40-60秒
-            formula.style.animationDuration = `${duration}s`;
-            formula.style.animationDelay = `${-Math.random() * duration}s`;
-            container.appendChild(formula);
-            return formula;
-        }
-
-        function createInitialFormulas() {
-            const container = document.querySelector('.floating-formulas');
-            const columns = 5;
-            const rows = 4;
-
-            for (let i = 0; i < columns * rows; i++) {
-                const column = i % columns;
-                const row = Math.floor(i / columns);
-                const x = (column / columns) * 100 + Math.random() * 10 - 5;
-                const y = (row / rows) * 100 + Math.random() * 10 - 5;
-                createFormula(container, x, y);
+        // 添加浮动粒子效果
+        function createParticles() {
+            const particles = document.querySelector('.particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particles.appendChild(particle);
             }
         }
 
-        function updateFormulas() {
-            const container = document.querySelector('.floating-formulas');
-            const formulaElements = container.querySelectorAll('.formula');
-
-            formulaElements.forEach(formula => {
-                if (Math.random() < 0.1) { // 10% 的概率更新公式
-                    formula.style.opacity = '0';
-                    setTimeout(() => {
-                        const x = Math.random() * 100;
-                        const y = 100 + Math.random() * 20; // 从底部稍微偏上的位置开始
-                        formula.innerHTML = formulaStrings[Math.floor(Math.random() * formulaStrings.length)];
-                        formula.style.left = `${x}%`;
-                        formula.style.top = `${y}%`;
-                        formula.style.opacity = '1';
-                        const duration = Math.random() * 20 + 40;
-                        formula.style.animationDuration = `${duration}s`;
-                        formula.style.animationDelay = '0s';
-                        MathJax.typesetPromise([formula]); // 重新渲染更新的公式
-                    }, 1000);
-                }
-            });
-        }
-
-        createInitialFormulas();
-
-        window.addEventListener('load', function () {
-            MathJax.typesetPromise().then(() => {
-                setInterval(updateFormulas, 2000);
-            });
-        });
-    </script>
-
-    <!-- 添加动态效果的 JavaScript -->
-    <script>
-        document.querySelectorAll('.ai-icon').forEach(icon => {
-            icon.addEventListener('mouseover', () => {
-                icon.querySelector('i').style.color = '#9333ea';
-            });
-
-            icon.addEventListener('mouseout', () => {
-                icon.querySelector('i').style.color = '#6b21a8';
-            });
-        });
+        // 页面加载时创建粒子
+        window.addEventListener('load', createParticles);
     </script>
 </body>
 

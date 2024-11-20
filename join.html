@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入我们 - AI探索实验室</title>
+    <style>
+        /* 添加基础样式到最前面 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: #0A0F1E;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;  /* 防止水平滚动条 */
+        }
+
+        /* 确保内容从导航栏下方开始 */
+        .papers-section,
+        .join-section {
+            padding-top: 120px;  /* 给导航栏留出空间 */
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0A0F1E, #1a1f35);
+            margin-top: 0;  /* 移除可能的顶部边距 */
+        }
+
+        /* 基础样式与导航栏样式同上 */
+
+        /* 加入我们部分样式 */
+        .join-section {
+            padding: 120px 50px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0A0F1E, #1a1f35);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #60A5FA, #3B82F6, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        .intro-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: #94A3B8;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .personal-link {
+            color: #60A5FA;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .personal-link:hover {
+            color: #3B82F6;
+        }
+
+        /* 导航栏样式 */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 15, 30, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+            background: linear-gradient(45deg, #60A5FA, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #60A5FA;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(96, 165, 250, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @keyframes shine {
+            from {
+                background-position: 200% center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="logo">AI探索实验室</div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="research.html">研究领域</a>
+            <a href="papers.html">论文</a>
+            <a href="join.html" class="active">加入我们</a>
+            <a href="author.html">作者</a>
+        </div>
+    </nav>
+
+    <!-- 加入我们部分 -->
+    <section class="join-section">
+        <h2 class="section-title">关于我们</h2>
+
+        <!-- 实验室介绍 -->
+        <div class="intro-section">
+            <p>欢迎加入AI探索实验室，一起探索人工智能的无限可能！</p>
+        </div>
+    </section>
+</body>
+</html> 

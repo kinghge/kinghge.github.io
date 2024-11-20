@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文 - AI探索实验室</title>
+    <style>
+        /* 添加基础样式到最前面 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: #0A0F1E;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;  /* 防止水平滚动条 */
+        }
+
+        /* 确保内容从导航栏下方开始 */
+        .papers-section,
+        .join-section {
+            padding-top: 120px;  /* 给导航栏留出空间 */
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0A0F1E, #1a1f35);
+            margin-top: 0;  /* 移除可能的顶部边距 */
+        }
+
+        /* 论文部分样式优化 */
+        .papers-section {
+            padding: 120px 50px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0A0F1E, #1a1f35);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #60A5FA, #3B82F6, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        /* 搜索和筛选部分优化 */
+        .papers-filter {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        /* 搜索框优化 */
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 20px 10px 45px; /* 为图标留出空间 */
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.2);
+            color: #fff;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1em;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: rgba(96, 165, 250, 0.3);
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.1);
+            background: rgba(30, 41, 59, 0.3);
+        }
+
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* 年份筛选优化 */
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .year-tag {
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: transparent;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .year-tag:hover {
+            background: rgba(96, 165, 250, 0.1);
+            border-color: rgba(96, 165, 250, 0.3);
+            color: #fff;
+        }
+
+        .year-tag.active {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: rgba(96, 165, 250, 0.4);
+            color: #fff;
+        }
+
+        /* 领域筛选下拉菜单优化 */
+        .filter-dropdown {
+            position: relative;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid rgba(96, 165, 250, 0.15);
+            border-radius: 10px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(96, 165, 250, 0.1);
+            border-color: rgba(96, 165, 250, 0.3);
+            color: #fff;
+        }
+
+        .filter-btn::after {
+            content: '▾';
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-btn.active::after {
+            transform: rotate(180deg);
+        }
+
+        /* 论文网格布局优化 */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .paper-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .paper-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.1);
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+
+        .paper-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .paper-year {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 15px;
+            color: #60A5FA;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .paper-card h3 {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .authors {
+            color: #94A3B8;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .journal {
+            color: #60A5FA;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .paper-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: #60A5FA;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        /* 论文详情弹窗 */
+        .paper-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #1a1f35;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 导航栏样式 */
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 15, 30, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+            background: linear-gradient(45deg, #60A5FA, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #60A5FA;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a:hover {
+            background: rgba(96, 165, 250, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* 添加按钮组样式 */
+        .paper-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        .paper-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            background: rgba(96, 165, 250, 0.05);
+            color: #60A5FA;
+        }
+
+        .paper-btn:hover {
+            background: rgba(96, 165, 250, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .paper-btn i {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="logo">AI探索实验室</div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="research.html">研究领域</a>
+            <a href="papers.html" class="active">论文</a>
+            <a href="join.html">加入我们</a>
+            <a href="author.html">作者</a>
+        </div>
+    </nav>
+
+    <!-- 论文列表部分 -->
+    <section class="papers-section">
+        <div class="section-header">
+            <h2 class="section-title">研究论文</h2>
+        </div>
+
+        <!-- 搜索和筛选 -->
+        <div class="papers-filter">
+            <div class="search-box">
+                <input type="text" placeholder="搜索论文或作者...">
+            </div>
+            
+            <div class="filter-group">
+                <button class="year-tag active">全部</button>
+                <button class="year-tag">2024</button>
+                <button class="year-tag">2023</button>
+                <button class="year-tag">2022</button>
+            </div>
+
+            <div class="filter-dropdown">
+                <button class="filter-btn">研究领域</button>
+            </div>
+        </div>
+
+        <!-- 论文网格 -->
+        <div class="papers-grid">
+            <div class="paper-card">
+                <div class="paper-year">2024</div>
+                <h3>GPT-4: Architecture, Infrastructure, and Training Process</h3>
+                <p class="authors">Sam Altman, Ilya Sutskever, et al.</p>
+                <p class="journal">arXiv preprint arXiv:2401.xxx</p>
+                <div class="paper-tags">
+                    <span class="tag">大语言模型</span>
+                    <span class="tag">GPT-4</span>
+                    <span class="tag">深度学习</span>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-year">2023</div>
+                <h3>Constitutional AI: A Framework for Machine Learning Systems</h3>
+                <p class="authors">Anthropic Research Team</p>
+                <p class="journal">NeurIPS 2023</p>
+                <div class="paper-tags">
+                    <span class="tag">AI安全</span>
+                    <span class="tag">伦理AI</span>
+                    <span class="tag">机器学习</span>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-year">2023</div>
+                <h3>PaLM 2 Technical Report</h3>
+                <p class="authors">Aakanksha Chowdhery, et al.</p>
+                <p class="journal">Google Research, 2023</p>
+                <div class="paper-tags">
+                    <span class="tag">大语言模型</span>
+                    <span class="tag">PaLM</span>
+                    <span class="tag">自然语言处理</span>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-year">2023</div>
+                <h3>Llama 2: Open Foundation and Fine-Tuned Chat Models</h3>
+                <p class="authors">Hugo Touvron, et al.</p>
+                <p class="journal">Meta AI Research</p>
+                <div class="paper-tags">
+                    <span class="tag">开源模型</span>
+                    <span class="tag">Llama</span>
+                    <span class="tag">对话系统</span>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-year">2023</div>
+                <h3>DALL·E 3: Improving Image Generation with Better Captions</h3>
+                <p class="authors">OpenAI Research Team</p>
+                <p class="journal">OpenAI Technical Report</p>
+                <div class="paper-tags">
+                    <span class="tag">图像生成</span>
+                    <span class="tag">多模态</span>
+                    <span class="tag">DALL·E</span>
+                </div>
+            </div>
+
+            <div class="paper-card">
+                <div class="paper-year">2022</div>
+                <h3>Training language models to follow instructions with human feedback</h3>
+                <p class="authors">Long Ouyang, et al.</p>
+                <p class="journal">Nature Machine Intelligence</p>
+                <div class="paper-tags">
+                    <span class="tag">RLHF</span>
+                    <span class="tag">指令微调</span>
+                    <span class="tag">人类反馈</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 论文详情弹窗 -->
+    <div class="paper-modal">
+        <div class="modal-content">
+            <!-- 动态插入论文详情 -->
+        </div>
+    </div>
+
+    <script>
+        // 论文卡片点击事件
+        document.querySelectorAll('.paper-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const modal = document.querySelector('.paper-modal');
+                modal.style.display = 'block';
+                // 可以在这里添加论文详情的动态加载
+            });
+        });
+
+        // 点击弹窗外关闭
+        document.querySelector('.paper-modal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('paper-modal')) {
+                e.target.style.display = 'none';
+            }
+        });
+
+        // 年份标签切换
+        const yearTags = document.querySelectorAll('.year-tag');
+        yearTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                yearTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+            });
+        });
+
+        // 搜索框动画
+        const searchInput = document.querySelector('.search-box input');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.style.transform = 'scale(1.02)';
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.style.transform = 'scale(1)';
+        });
+
+        // 领域筛选按钮
+        const filterBtn = document.querySelector('.filter-btn');
+        filterBtn.addEventListener('click', () => {
+            filterBtn.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作者介绍 - AI探索实验室</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(to right, #0A0F1E, #1A1F2E);
+            color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 15, 30, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-sizing: border-box;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a:hover {
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a.active {
+            background: rgba(96, 165, 250, 0.2);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.2);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #60A5FA;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .author-section {
+            max-width: 800px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            margin-top: 120px;
+        }
+
+        .author-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .author-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #94A3B8;
+            margin-bottom: 30px;
+        }
+
+        .author-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .author-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-bar">
+        <div class="logo">AI探索实验室</div>
+        <div class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="research.html">研究领域</a>
+            <a href="papers.html">论文</a>
+            <a href="join.html">加入我们</a>
+            <a href="author.html" class="active">作者</a> <!-- 当前页面 -->
+        </div>
+    </nav>
+
+    <section class="author-section">
+        <h2>作者介绍</h2>
+        <p>作者是刚刚开始学习人工智能的小白，正在努力学习中</p>
+        <a href="./kinghge/kinghge.html" class="author-button" target="_blank">访问个人网页</a>
+    </section>
+</body>
+
+</html>
